@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
 
         Coma.withActivity(this)
             .with(20, Intent(Intent.ACTION_GET_CONTENT))
-            .withRequestHandler { result -> println("${result.code} ${result.data}") }
+            .withRequestHandler { result -> println("${result.requestCode} ${result.resultCode} ${result.data}") }
             .startForResult()
     }
 }

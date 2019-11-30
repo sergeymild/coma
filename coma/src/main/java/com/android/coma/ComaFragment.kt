@@ -8,9 +8,9 @@ class ComaFragment : Fragment() {
     private var resultHandler: ResultHandler? = null
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (resultRequest?.code == requestCode) {
+        if (resultRequest?.requestCode == requestCode) {
             data ?: throw IllegalStateException("onActivityResult with code: $requestCode data was null")
-            resultHandler?.invoke(Result(requestCode, data))
+            resultHandler?.invoke(Result(requestCode, resultCode, data))
         }
         super.onActivityResult(requestCode, resultCode, data)
     }
@@ -18,6 +18,6 @@ class ComaFragment : Fragment() {
     fun startForResult(request: ResultRequest, handler: ResultHandler) {
         resultRequest = request
         resultHandler = handler
-        startActivityForResult(request.intent, request.code)
+        startActivityForResult(request.intent, request.requestCode)
     }
 }
