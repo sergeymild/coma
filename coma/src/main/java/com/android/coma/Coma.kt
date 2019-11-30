@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import java.lang.ref.WeakReference
 
 class ResultRequest(val requestCode: Int, val intent: Intent)
-class Result(val requestCode: Int, val resultCode: Int, val data: Intent)
+class Result(val requestCode: Int, val resultCode: Int, val data: Intent?)
 
 typealias ResultHandler = ((Result) -> Unit)
 

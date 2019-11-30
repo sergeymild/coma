@@ -9,7 +9,6 @@ class ComaFragment : Fragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (resultRequest?.requestCode == requestCode) {
-            data ?: throw IllegalStateException("onActivityResult with code: $requestCode data was null")
             resultHandler?.invoke(Result(requestCode, resultCode, data))
         }
         super.onActivityResult(requestCode, resultCode, data)
