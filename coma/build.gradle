@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 
-version = "1.0.3"
+version = "1.0.4"
 archivesBaseName = "coma-$version"
 
 

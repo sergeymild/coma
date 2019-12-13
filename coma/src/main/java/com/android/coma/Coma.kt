@@ -2,6 +2,7 @@ package com.android.coma
 
 import android.content.Intent
 import android.os.Build
+import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import java.lang.ref.WeakReference
 
@@ -30,7 +31,11 @@ class Coma private constructor(activity: AppCompatActivity) {
     }
 
     fun startForResult() {
-        initializeFragmentAndRequest()
+        if (Looper.getMainLooper() == Looper.myLooper()) {
+            initializeFragmentAndRequest()
+        } else {
+            activity.get()?.runOnUiThread { initializeFragmentAndRequest() }
+        }
     }
 
     private fun initializeFragmentAndRequest() {
